@@ -1,0 +1,24 @@
+# Multiple Regression II
+
+## Extra Sums of Squares
+
+- Defination
+
+An extra sum of squares measures:
+
+1. the marginal reduction in the error sum of squares (SSE)
+2. the marginal increase in the regression sum of squares (SSR)
+
+when one or several preictor variables are added to the regression model, given that other predictor variables are already in the model
+
+- Example:
+
+SSR(X1|X2) = SSR(X1,X2) - SSR(X2) = SSSE(X2) - SSE(X1,X2)
+
+- Decomposition of SSR into Extra Sums of Squares
+
+SSTO = SSR(X1) + SSE(X1) = SSR(X1) + SSR(X2|X1) + SSE(X1,X2)
+
+SSR(X1,X2,X3) = SSR(X1) + SSR(X2|X1) + SSR(X3|X1,X2) = SSR(X1) + SSR(X2,X3|X1)
+
+- ANOVA Table Containing Decomposition of SSR

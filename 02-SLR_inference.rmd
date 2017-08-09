@@ -8,16 +8,15 @@ The sampling distribution of b1 refers to the different values of b1 that would 
 
 For normal error regression model, the sample distributon of b1 is **normal**, with mean and variance:
 
-$$E(b1) = \beta_{1}$$
+$$E(b_1) = \beta_{1}$$
 
-$$\sigma^{2}(b1) = \frac{\sigma^{2}}{\sum(X_{i} - \bar{X})^{2}}$$
+$$\sigma^{2}(b_1) = \frac{\sigma^{2}}{\sum(X_{i} - \bar{X})^{2}}$$
 
 - Proof
 
 b1 as linear combination of the Yi
 
-$$b1 = \sum k_{i}Y_{i}\text{where }k_{i} = \frac{X_{i} - \bar{X}}{\sum(X_{i} - \bar{X})^{2}}$$
-(
+$$b1 = \sum k_{i}Y_{i}\text{ where }k_{i} = \frac{X_{i} - \bar{X}}{\sum(X_{i} - \bar{X})^{2}}$$
 - Nomaily
 
 The $Y_{i}$ are independently, normally distributed, so b1 are normally distributed.
@@ -232,6 +231,13 @@ $$r = \pm \sqrt{R^2}, -1 \leq r \leq 1$$
 
 ## Considerations in Applying Regression Analysis
 
+1. make inferences
+2. the predictor variable itsef often has to be predicted
+3. the levels of the predictor variable that fall outside the range of observations
+4. $\beta_1 \neq 0$ doesnot establish a cause-and-effect relation
+5. multiple testing
+6. observations on the predictor variable X are subject to measurement erros
+
 ## Normal Correlation Models
 
 - Distinction between Regression and Correlation Model
@@ -239,3 +245,77 @@ $$r = \pm \sqrt{R^2}, -1 \leq r \leq 1$$
 - Conditional Inferences
 - Inferences on Correlation Coefficients
 - Spearman Rank Correlation Coefficient
+
+## R code
+
+### Example data
+
+```{r}
+head(trees)
+X = trees$Volume ## 体积
+Y = trees$Girth ## 直径
+```
+
+### built-in function
+
+```{r, cache=TRUE}
+fit <- lm(Y~X)
+summary(fit)
+coefficients(fit) # model coefficients
+confint(fit, level=0.95) # CIs for model parameters 
+fitted(fit) # predicted values
+residuals(fit) # residuals
+anova(fit) # anova table 
+```
+
+### point estimator $b_0$ and $b_1$
+
+```{r, cache=TRUE}
+n = nrow(trees)
+Xbar = mean(X)
+Ybar = mean(Y)
+b1 = sum((X - Xbar)*(Y - Ybar))/sum((X-Xbar)^2)
+b0 = Ybar - b1*Xbar
+b1;b0
+```
+
+### Residuals, SSE and MSE
+
+```{r,cache=TRUE}
+residual = Y - b1*X - b0
+SSE = sum(residual^2)
+MSE = SSE/(n-2)
+SSE; MSE; sqrt(MSE)
+```
+
+### sampling distribution of $b_1$ and $(b_1−\beta_1)/s(b_1)$
+
+```{r, cache=TRUE}
+s = sqrt( MSE/sum((X - Xbar)^2))
+t = b1 / s
+p = (1 - pt(t, n -2))*2
+s; t; p
+```
+
+### F test
+
+```{r,cache=TRUE}
+SSTO = var(Y) * (n-1)
+F = (SSTO - SSE)/((n-1) - (n-2)) / (SSE/(n-2))
+F
+```
+
+### $R^2$ and r
+
+```{r, cache=TRUE}
+Rsq = 1 - SSE/SSTO
+r = b1/abs(b1) * sqrt(Rsq) 
+Rsq; r; cor(X,Y)
+```
+
+### plot
+
+```{r, cache=TRUE}
+plot(X,Y)
+abline(b0,b1, col="red")
+```

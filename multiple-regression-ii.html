@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="index.html">
-<link rel="next" href="inferences-in-regeression-and-correlation-analysis.html">
+<link rel="prev" href="multiple-linear-regression-i.html">
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -184,230 +184,31 @@ Published with <a href="https://github.com/rstudio/bookdown" target="blank">book
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="linear-regression-with-one-predictor-variable" class="section level1">
-<h1><span class="header-section-number">2</span> Linear regression with one predictor variable</h1>
-<div id="relations-between-variables" class="section level2">
-<h2><span class="header-section-number">2.1</span> Relations between variables</h2>
+<div id="multiple-regression-ii" class="section level1">
+<h1><span class="header-section-number">8</span> Multiple Regression II</h1>
+<div id="extra-sums-of-squares" class="section level2">
+<h2><span class="header-section-number">8.1</span> Extra Sums of Squares</h2>
 <ul>
-<li>relation
-<ul>
-<li><em>Function relation</em>: Y = f(X), e.g. total cost = the number of products * cost per product</li>
-<li><em>Statistical relation</em>: not a perfect one, e.g. performance for 10 employees at midyear and year-end</li>
-</ul></li>
-<li>variable
-<ul>
-<li>X: <em>independent/explanatory/predictor variable</em></li>
-<li>Y: <em>dependent/response variable</em></li>
-</ul></li>
-<li>plot
-<ul>
-<li><em>scatter diagram/plot</em></li>
-<li>each point represents a <em>trial</em> or a <em>case</em></li>
-</ul></li>
+<li>Defination</li>
 </ul>
-</div>
-<div id="regression-models-and-their-uses" class="section level2">
-<h2><span class="header-section-number">2.2</span> Regression Models and Their Uses</h2>
-<ul>
-<li>History
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/Francis_Galton">Sir Francis Galton</a> in the latter part of 19th century</li>
-<li>relation between heights of parents and children</li>
-<li>regression to the mean</li>
-</ul></li>
-<li>Basic Concepts
-<ul>
-<li>A regression model</li>
-<li>two characters:
-<ul>
-<li>there is a probability distribution of Y for each level of X</li>
-<li>The means of these probability distribution vary in some systematic fashion with X</li>
-</ul></li>
-<li><em>regression function</em>: the systematic relationship
-<ul>
-<li><em>linear</em>, <em>curvilinear</em>, etc.</li>
-</ul></li>
-<li><em>regression curve</em>: the graph of the regression function</li>
-<li>probability distributions: <em>symmetrical</em>, <em>skewed</em> etc.</li>
-</ul></li>
-<li>Regression models with more than one predictor variable</li>
-<li>Construction of Regression Models
-<ul>
-<li>Selection of predictor variables</li>
-<li>Functional form of regression relation</li>
-<li>Scope of model</li>
-</ul></li>
-<li>Uses of regression analysis
-<ul>
-<li>description</li>
-<li>control</li>
-<li>prediction</li>
-<li>overlap in practice</li>
-</ul></li>
-<li>Regeression and causality</li>
-<li>Use of Computers</li>
-</ul>
-</div>
-<div id="simple-linear-regression-model-with-distribution-of-error-terms-unspecified" class="section level2">
-<h2><span class="header-section-number">2.3</span> Simple linear regression model with distribution of error terms unspecified</h2>
-<ul>
-<li>Formal statement of model</li>
-</ul>
-<p><span class="math display">\[Y_{i} = \beta_{0} + \beta_{1}X_{i} + \varepsilon_{i}\]</span></p>
-<p>where:</p>
-<ul>
-<li><span class="math inline">\(Y_{i}\)</span> is the value of th response variable in the ith trail</li>
-<li><span class="math inline">\(\beta_{0}\text{ and }\beta_{1}\)</span> are paramters</li>
-<li><span class="math inline">\(X_{i}\)</span> is a known constant, namely, the value of the predictor variable in the ith trial</li>
-<li><span class="math inline">\(\varepsilon_{i}\)</span> is a random error term
-<ul>
-<li>mean <span class="math inline">\(E(\varepsilon_{i}) = 0\)</span></li>
-<li>variance <span class="math inline">\(\sigma^{2}(\varepsilon_{i}) = \sigma^{2}\)</span></li>
-<li>covariance <span class="math inline">\(\sigma(\varepsilon_{i}, \varepsilon_{j}) = 0\)</span>, for all i, j; <span class="math inline">\(i \neq j\)</span></li>
-</ul></li>
-<li>Important features of model</li>
-</ul>
+<p>An extra sum of squares measures:</p>
 <ol style="list-style-type: decimal">
-<li><span class="math inline">\(Y_{i}\)</span> contains two components: the constant term <span class="math inline">\(\beta_{0} + \beta_{1}X_{i}\)</span> and the random term <span class="math inline">\(\varepsilon_{i}\)</span>. Hence, <span class="math inline">\(Y_{i}\)</span> is a random variable</li>
-<li>Since <span class="math inline">\(E(\varepsilon_{i}) = 0\)</span>, <span class="math inline">\(E(Y_{i}) = E(\beta_{0} + \beta_{1}X_{i} + \varepsilon_{i}) = \beta_{0} + \beta_{1}X_{i} + E(\varepsilon_{i}) = \beta_{0} + \beta_{1}X_{i}\)</span></li>
-<li>The response <span class="math inline">\(Y_{i}\)</span> in the ith trail exceeds or falls short of the value of the regssion fucntion by the error term amount <span class="math inline">\(\varepsilon_{i}\)</span></li>
-<li>The erorr term <span class="math inline">\(\varepsilon_{i}\)</span> are assumed to have constant variance <span class="math inline">\(\sigma^{2}\)</span> and <span class="math inline">\(\sigma^{2}(Y_{i}) = \sigma^{2}\)</span></li>
-<li>The error terms are assumed to be uncorrelated, so are the responses <span class="math inline">\(Y_{i}\)</span> and <span class="math inline">\(Y_{j}\)</span></li>
+<li>the marginal reduction in the error sum of squares (SSE)</li>
+<li>the marginal increase in the regression sum of squares (SSR)</li>
 </ol>
+<p>when one or several preictor variables are added to the regression model, given that other predictor variables are already in the model</p>
 <ul>
-<li>Meaning of regression paramters
-<ul>
-<li><em>regrssion coefficients</em>: the paramters <span class="math inline">\(\beta_{0}\text{ and }\beta_{1}\)</span></li>
-<li><em>the slope of the regression line</em>: <span class="math inline">\(\beta_{1}\)</span></li>
-</ul></li>
-<li>Alternative versions of regression model</li>
+<li>Example:</li>
 </ul>
-<p><span class="math display">\[Y_{i} = \beta_{0}X_{0} + \beta_{1}X_{i} + \varepsilon_{i}\text{, where }X_{0} \equiv 1\]</span></p>
-<p><span class="math display">\[Y_{i} = \beta_{0}^{*} + \beta_{1}(X_{i} - \bar{X}) + \varepsilon_{i}\text{, where }\beta_{0}^{*} = \beta_{0} + \beta_{1}\bar{X}\]</span></p>
-</div>
-<div id="data-for-regression-analysis" class="section level2">
-<h2><span class="header-section-number">2.4</span> Data for regression analysis</h2>
+<p>SSR(X1|X2) = SSR(X1,X2) - SSR(X2) = SSSE(X2) - SSE(X1,X2)</p>
 <ul>
-<li>Observational Data</li>
-<li>Eperimental Data
-<ul>
-<li>treatment</li>
-<li>experimental units</li>
-</ul></li>
-<li>Completely randomized design</li>
+<li>Decomposition of SSR into Extra Sums of Squares</li>
 </ul>
-</div>
-<div id="overview-of-steps-in-regression-analysis" class="section level2">
-<h2><span class="header-section-number">2.5</span> Overview of steps in regression analysis</h2>
-</div>
-<div id="estimation-of-regression-function" class="section level2">
-<h2><span class="header-section-number">2.6</span> Estimation of regression function</h2>
+<p>SSTO = SSR(X1) + SSE(X1) = SSR(X1) + SSR(X2|X1) + SSE(X1,X2)</p>
+<p>SSR(X1,X2,X3) = SSR(X1) + SSR(X2|X1) + SSR(X3|X1,X2) = SSR(X1) + SSR(X2,X3|X1)</p>
 <ul>
-<li>Methods of Least Squares
-<ul>
-<li>To find estimates <span class="math inline">\(b_{0}\)</span> and <span class="math inline">\(b_{1}\)</span> for <span class="math inline">\(\beta_{0}\)</span> and <span class="math inline">\(\beta_{1}\)</span>, respectively, for which Q is a minimum, where <span class="math inline">\(Q = \displaystyle\sum_{i=1}^{n}(Y_{i} - \beta_{0} - \beta_{1}X_{i})^2\)</span>.</li>
-<li>Least Squares Estimators <span class="math inline">\(b_{0}\)</span> and <span class="math inline">\(b_{1}\)</span> can be found in two ways:
-<ul>
-<li>numerical search procedures</li>
-<li>analytical procedures</li>
-</ul></li>
-</ul></li>
+<li>ANOVA Table Containing Decomposition of SSR</li>
 </ul>
-<p><span class="math display">\[b_{1} = \frac{\sum(X_{i} - \bar{X})(Y_{i} - \bar{Y})}{\sum(X_{i} - \bar{X})^2}\]</span></p>
-<p><span class="math display">\[b_{0} = \frac{1}{n}(\sum Y_{i} - b_{1} \sum X_{i}) = \bar{Y} - b_{1}\bar{X}\]</span></p>
-<ul>
-<li>Proof</li>
-</ul>
-<p>The paritial derivatives are</p>
-<p><span class="math display">\[\frac{\partial Q}{\partial\beta_{0}} = -2\sum(Y_{i} - \beta_{0} - \beta_{1}X_{i})\]</span></p>
-<p><span class="math display">\[\frac{\partial Q}{\partial\beta_{1}} = -2\sum X_{i}(Y_{i} - \beta_{0} - \beta_{1}X_{i})\]</span></p>
-<p>We set them equal to zero, using <span class="math inline">\(b_{0}\)</span> and <span class="math inline">\(b_{1}\)</span> to denote the particular values of <span class="math inline">\(b_{0}\)</span> and <span class="math inline">\(b_{1}\)</span> that minimize Q:</p>
-<p><span class="math display">\[-2\sum(Y_{i} - \beta_{0} - \beta_{1}X_{i}) = 0\]</span></p>
-<p><span class="math display">\[-2\sum X_{i}(Y_{i} - \beta_{0} - \beta_{1}X_{i}) = 0\]</span></p>
-<ul>
-<li>Proerties of Least Squares Estimators</li>
-</ul>
-<p>Guass-Markov theorem:</p>
-<blockquote>
-<p>Under the conditions of regression model, the least squares estimators b0 and b1 are unbiased and have minimum variance among all unbiased linear estimators</p>
-</blockquote>
-<ul>
-<li>Point Esitmation of Mean Response
-<ul>
-<li>estimate the regression function as follows:</li>
-</ul>
-<p><span class="math display">\[\hat{Y} = b_{0} + b_{1}X\]</span></p></li>
-<li>Residuals
-<ul>
-<li>residual: the differenc between the observed value <span class="math inline">\(Y_{i}\)</span> and the corresponding fitted value <span class="math inline">\(\hat{Y_{i}}\)</span></li>
-</ul></li>
-</ul>
-<p><span class="math display">\[e_{i} = Y_{i} - \hat{Y}_{i}\]</span></p>
-<ul>
-<li>Properties of Fitted Regression Line
-<ul>
-<li><span class="math inline">\(\sum e_{i} = 0\)</span></li>
-<li><span class="math inline">\(\sum e_{i}^{2}\)</span> is a minimum</li>
-<li><span class="math inline">\(\sum Y_{i} = \sum \hat{Y}_{i}\)</span></li>
-<li>$X_{i} e_{i} = 0 $</li>
-<li><span class="math inline">\(\sum \hat{Y}_{i}\)</span>e<sub>i</sub> = 0</li>
-<li>the regression line always goes through the point <span class="math inline">\((\bar{X}, \bar{Y})\)</span></li>
-</ul></li>
-</ul>
-</div>
-<div id="estimation-of-erro-terms-variance-sigma2" class="section level2">
-<h2><span class="header-section-number">2.7</span> Estimation of Erro Terms Variance <span class="math inline">\(\sigma^{2}\)</span></h2>
-<ul>
-<li>Point Estimator of <span class="math inline">\(\sigma^{2}\)</span>
-<ul>
-<li>Single population
-<ul>
-<li>sum of squares: <span class="math inline">\(\displaystyle\sum_{i=1}^{n}(Y_{i}-\bar{Y})^2\)</span></li>
-<li>degrees of freedom (df): n - 1, because one degree of freedom is lost by using <span class="math inline">\(\bar{Y}\)</span> as an estimate of the unknown population mean <span class="math inline">\(\mu\)</span></li>
-<li>sample variance/mean square: <span class="math inline">\(s^2 = \frac{\displaystyle\sum(Y_{i}-\bar{Y})^2}{n-1}\)</span></li>
-</ul></li>
-<li>Regression model
-<ul>
-<li>deviation/residual: <span class="math inline">\(Y_{i} - \hat{Y}_{i}\)</span> = e<sub>i</sub></li>
-<li>error/residual sum of squares:
-<ul>
-<li><span class="math inline">\(SSE = \displaystyle\sum_{i=1}^{n}(Y_{i} - \hat{Y}_{i})^{2}\)</span></li>
-<li><span class="math inline">\(SSE = \displaystyle\sum_{i=1}^{n}e_{i}^{2}\)</span></li>
-</ul></li>
-<li>degrees of freedom: n - 2, because two degrees of freedom are lost due to estimating <span class="math inline">\(\beta_{0}\)</span> and <span class="math inline">\(\beta_{1}\)</span> to get <span class="math inline">\(\hat{Y}_{i}\)</span></li>
-<li>MSE (error/residual mean square): <span class="math inline">\(s^{2} = MSE = \frac{SSE}{n-2}\)</span></li>
-</ul></li>
-</ul></li>
-</ul>
-</div>
-<div id="normal-error-regression-model" class="section level2">
-<h2><span class="header-section-number">2.8</span> Normal Error Regression Model</h2>
-<ul>
-<li>Model
-<ul>
-<li>same with simple linear regression model</li>
-<li>except it assumes that the error <span class="math inline">\(\varepsilon_{i}\)</span> are normally distributed</li>
-</ul></li>
-<li>Estimation of Parameters by Method of Maximum Likelihood</li>
-</ul>
-<p>Method of maximum likelihood chooses as estimates those values of the parameters that are most consistent with the sample data.</p>
-<pre><code>A normal distribution with SD = 10, mean is unknown
-A random of sample n = 3 yields the results 250, 265 and 259
-The likelihood value (L) is the product of the densities of the normal distribution
-
-If we assue μ = 230, L(μ = 230) = 0.279*10E-9 
-R code: prod(dnorm(c(250,265,259), 230, 10))
-If we assue μ = 259, L(μ = 259) = 0.0000354
-R code: prod(dnorm(c(250,265,259), 259, 10))
-
-So, L(μ = 259) &gt; L(μ = 230)
-
-The method of maximum likelihood is to estimate prarametes to get maximum L.
-It can be shown that for a normal population,
-the maximum likelihood estimator of μ is the smaple mean</code></pre>
-<p>Fro regression model, the likelihood function for n observations is</p>
-<p><span class="math display">\[L(\beta_{0}, \beta_{1}, \sigma^{2}) = \displaystyle\Pi_{i=1}^{n}\frac{1}{(2\pi\sigma^{2})^{1/2}}exp[-\frac{1}{2\sigma^{2}}(Y_{i} - \beta_{0} - \beta_{1}X_{i})^{2}]\]</span></p>
-<p><span class="math display">\[L(\beta_{0}, \beta_{1}, \sigma^{2}) = \frac{1}{(2\pi\sigma^{2})^{1/2}}exp[-\frac{1}{2\sigma^{2}}\displaystyle\sum_{i=1}^{n}(Y_{i} - \beta_{0} - \beta_{1}X_{i})^{2}]\]</span></p>
 
 </div>
 </div>
@@ -416,8 +217,8 @@ the maximum likelihood estimator of μ is the smaple mean</code></pre>
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="inferences-in-regeression-and-correlation-analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="multiple-linear-regression-i.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
