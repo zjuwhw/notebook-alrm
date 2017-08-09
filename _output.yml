@@ -1,17 +1,9 @@
 bookdown::gitbook:
-  css: style.css
   config:
     toc:
+      collapse: none
+      toc_unnumbered: yes
       before: |
-        <li><a href="./">A Minimal Book Example</a></li>
+        <li><a href="./">Notebook for ALRM</a></li>
       after: |
-        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-    edit: https://github.com/rstudio/bookdown-demo/edit/master/%s
-    download: ["pdf", "epub"]
-bookdown::pdf_book:
-  includes:
-    in_header: preamble.tex
-  latex_engine: xelatex
-  citation_package: natbib
-  keep_tex: yes
-bookdown::epub_book: default
+        Published with <a href="https://github.com/rstudio/bookdown" target="blank">bookdown</a> by <a href="http://zjuwhw.github.io/" target="blank">zjuwhw</a>
