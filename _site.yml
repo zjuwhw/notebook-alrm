@@ -1,0 +1,6 @@
+name: "notebook-alrm"
+navbar:
+  title: "Notebook of ALRM"
+  left:
+    - text: "Chapter1"
+      href: test.html
