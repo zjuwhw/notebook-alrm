@@ -7,7 +7,7 @@
 $$Y_i = \beta_0 + \beta_1X_{i1} + \beta_2X_{i2} + \varepsilon_i$$
 
 - regression surface/response surface
-- addiive effects or not to interact
+- additive effects or not to interact
 - partial regression coefficients
 
 ### First-Order Model with More than Two Predictor Variables
