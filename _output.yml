@@ -2,8 +2,6 @@ bookdown::gitbook:
   config:
     toc:
       collapse: none
-      toc_unnumbered: yes
-      toc_depth: 1
       before: |
         <li><a href="./">Notebook for ALRM</a></li>
       after: |
