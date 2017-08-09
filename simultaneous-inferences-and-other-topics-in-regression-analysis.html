@@ -69,9 +69,18 @@
 <li class="chapter" data-level="4" data-path="diagnostics-and-remedial-measures.html"><a href="diagnostics-and-remedial-measures.html"><i class="fa fa-check"></i><b>4</b> Diagnostics and Remedial Measures</a></li>
 <li class="chapter" data-level="5" data-path="simultaneous-inferences-and-other-topics-in-regression-analysis.html"><a href="simultaneous-inferences-and-other-topics-in-regression-analysis.html"><i class="fa fa-check"></i><b>5</b> Simultaneous Inferences and Other Topics in Regression Analysis</a></li>
 <li class="chapter" data-level="6" data-path="matrix-approach-to-simple-linear-regression-analysis.html"><a href="matrix-approach-to-simple-linear-regression-analysis.html"><i class="fa fa-check"></i><b>6</b> Matrix Approach to Simple Linear Regression Analysis</a></li>
-<li class="chapter" data-level="7" data-path="multiple-linear-regression-i.html"><a href="multiple-linear-regression-i.html"><i class="fa fa-check"></i><b>7</b> Multiple linear regression I</a></li>
+<li class="chapter" data-level="7" data-path="multiple-linear-regression-i.html"><a href="multiple-linear-regression-i.html"><i class="fa fa-check"></i><b>7</b> Multiple linear regression I</a><ul>
+<li class="chapter" data-level="7.1" data-path="multiple-linear-regression-i.html"><a href="multiple-linear-regression-i.html#multiple-regression-models"><i class="fa fa-check"></i><b>7.1</b> Multiple Regression Models</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="multiple-linear-regression-i.html"><a href="multiple-linear-regression-i.html#first-order-model-with-two-predictor-variables"><i class="fa fa-check"></i><b>7.1.1</b> First-Order Model with Two Predictor Variables</a></li>
+<li class="chapter" data-level="7.1.2" data-path="multiple-linear-regression-i.html"><a href="multiple-linear-regression-i.html#first-order-model-with-more-than-two-predictor-variables"><i class="fa fa-check"></i><b>7.1.2</b> First-Order Model with More than Two Predictor Variables</a></li>
+<li class="chapter" data-level="7.1.3" data-path="multiple-linear-regression-i.html"><a href="multiple-linear-regression-i.html#general-linear-regression-model"><i class="fa fa-check"></i><b>7.1.3</b> General Linear Regression Model</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="multiple-linear-regression-i.html"><a href="multiple-linear-regression-i.html#general-linear-regression-model-in-matrix-terms"><i class="fa fa-check"></i><b>7.2</b> General Linear Regression Model in Matrix Terms</a></li>
+<li class="chapter" data-level="7.3" data-path="multiple-linear-regression-i.html"><a href="multiple-linear-regression-i.html#estimation-of-regression-coefficients"><i class="fa fa-check"></i><b>7.3</b> Estimation of Regression Coefficients</a></li>
+</ul></li>
 <li class="divider"></li>
 Published with <a href="https://github.com/rstudio/bookdown" target="blank">bookdown</a> by <a href="http://zjuwhw.github.io/" target="blank">zjuwhw</a>
+
 </ul>
 
       </nav>
@@ -134,12 +143,24 @@ gitbook.start({
 "download": null,
 "toc": {
 "collapse": "none",
-"toc_unnumbered": true
+"toc_unnumbered": true,
+"toc_depth": 1
 }
 });
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

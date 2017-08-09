@@ -69,9 +69,18 @@
 <li class="chapter" data-level="4" data-path="diagnostics-and-remedial-measures.html"><a href="diagnostics-and-remedial-measures.html"><i class="fa fa-check"></i><b>4</b> Diagnostics and Remedial Measures</a></li>
 <li class="chapter" data-level="5" data-path="simultaneous-inferences-and-other-topics-in-regression-analysis.html"><a href="simultaneous-inferences-and-other-topics-in-regression-analysis.html"><i class="fa fa-check"></i><b>5</b> Simultaneous Inferences and Other Topics in Regression Analysis</a></li>
 <li class="chapter" data-level="6" data-path="matrix-approach-to-simple-linear-regression-analysis.html"><a href="matrix-approach-to-simple-linear-regression-analysis.html"><i class="fa fa-check"></i><b>6</b> Matrix Approach to Simple Linear Regression Analysis</a></li>
-<li class="chapter" data-level="7" data-path="multiple-linear-regression-i.html"><a href="multiple-linear-regression-i.html"><i class="fa fa-check"></i><b>7</b> Multiple linear regression I</a></li>
+<li class="chapter" data-level="7" data-path="multiple-linear-regression-i.html"><a href="multiple-linear-regression-i.html"><i class="fa fa-check"></i><b>7</b> Multiple linear regression I</a><ul>
+<li class="chapter" data-level="7.1" data-path="multiple-linear-regression-i.html"><a href="multiple-linear-regression-i.html#multiple-regression-models"><i class="fa fa-check"></i><b>7.1</b> Multiple Regression Models</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="multiple-linear-regression-i.html"><a href="multiple-linear-regression-i.html#first-order-model-with-two-predictor-variables"><i class="fa fa-check"></i><b>7.1.1</b> First-Order Model with Two Predictor Variables</a></li>
+<li class="chapter" data-level="7.1.2" data-path="multiple-linear-regression-i.html"><a href="multiple-linear-regression-i.html#first-order-model-with-more-than-two-predictor-variables"><i class="fa fa-check"></i><b>7.1.2</b> First-Order Model with More than Two Predictor Variables</a></li>
+<li class="chapter" data-level="7.1.3" data-path="multiple-linear-regression-i.html"><a href="multiple-linear-regression-i.html#general-linear-regression-model"><i class="fa fa-check"></i><b>7.1.3</b> General Linear Regression Model</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="multiple-linear-regression-i.html"><a href="multiple-linear-regression-i.html#general-linear-regression-model-in-matrix-terms"><i class="fa fa-check"></i><b>7.2</b> General Linear Regression Model in Matrix Terms</a></li>
+<li class="chapter" data-level="7.3" data-path="multiple-linear-regression-i.html"><a href="multiple-linear-regression-i.html#estimation-of-regression-coefficients"><i class="fa fa-check"></i><b>7.3</b> Estimation of Regression Coefficients</a></li>
+</ul></li>
 <li class="divider"></li>
 Published with <a href="https://github.com/rstudio/bookdown" target="blank">bookdown</a> by <a href="http://zjuwhw.github.io/" target="blank">zjuwhw</a>
+
 </ul>
 
       </nav>
@@ -91,7 +100,91 @@ Published with <a href="https://github.com/rstudio/bookdown" target="blank">book
             <section class="normal" id="section-">
 <div id="multiple-linear-regression-i" class="section level1">
 <h1><span class="header-section-number">7</span> Multiple linear regression I</h1>
+<div id="multiple-regression-models" class="section level2">
+<h2><span class="header-section-number">7.1</span> Multiple Regression Models</h2>
+<div id="first-order-model-with-two-predictor-variables" class="section level3">
+<h3><span class="header-section-number">7.1.1</span> First-Order Model with Two Predictor Variables</h3>
+<p><span class="math display">\[Y_i = \beta_0 + \beta_1X_{i1} + \beta_2X_{i2} + \varepsilon_i\]</span></p>
+<ul>
+<li>regression surface/response surface</li>
+<li>addiive effects or not to interact</li>
+<li>partial regression coefficients</li>
+</ul>
+</div>
+<div id="first-order-model-with-more-than-two-predictor-variables" class="section level3">
+<h3><span class="header-section-number">7.1.2</span> First-Order Model with More than Two Predictor Variables</h3>
+<p><span class="math display">\[Y_i = \beta_0 + \beta_1X_{i1} + \beta_2X_{i2} + ... + \beta_{p-1}X_{i,p-1}+\varepsilon_i\]</span></p>
+<p><span class="math display">\[Y_i = \beta_0 + \displaystyle\sum_{k=1}^{p-1}\beta_{k}X_{ik} + \varepsilon_i\]</span></p>
+<p><span class="math display">\[Y_i = \displaystyle\sum_{k=0}^{p-1}\beta_{k}X_{ik} + \varepsilon_i,\text{ where }X_{i0} \equiv 1\]</span></p>
+<ul>
+<li>hyperplane: the response function, which is a plane in more than two dimensions.</li>
+</ul>
+</div>
+<div id="general-linear-regression-model" class="section level3">
+<h3><span class="header-section-number">7.1.3</span> General Linear Regression Model</h3>
+<p><span class="math display">\[Y_i = \beta_0 + \beta_1X_{i1} + \beta_2X_{i2} + ... + \beta_{p-1}X_{i,p-1}+\varepsilon_i\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(\beta_0, \beta_2, ..., \beta_{p-1}\)</span> are parameters</li>
+<li><span class="math inline">\(X_{i1}, ..., X_{i,p-1}\)</span> are known constants</li>
+<li><span class="math inline">\(\varepsilon_i\)</span> are independent <span class="math inline">\(N(0,\sigma^2)\)</span></li>
+<li><p><span class="math inline">\(i = 1, ..., n\)</span></p></li>
+<li>p-1 predictor variables</li>
+<li>qualitative predictor variables</li>
+<li><p>polynomia regression:</p></li>
+</ul>
+<p><span class="math display">\[Y_i = \beta_0 + \beta_1X_{i1} + \beta_2X_{i1}^2 + \varepsilon_i\]</span></p>
+<p>can be written as</p>
+<p><span class="math display">\[Y_i = \beta_0 + \beta_1X_{i1} + \beta_2X_{i2} + \varepsilon_i\text{ if }X_{i2} = X_i^2\]</span></p>
+<ul>
+<li>transformed variables:</li>
+</ul>
+<p><span class="math display">\[logY_i = \beta_0 + \beta_1X_{i1} + \beta_2X_{i2} + \varepsilon_i\]</span></p>
+<p>can be treated as a general linear regression model:</p>
+<p><span class="math display">\[Y_i^{&#39;} = \beta_0 + \beta_1X_{i1} + \beta_2X_{i2} + \varepsilon_i\text{ if }Y_i^{&#39;}=logY_i\]</span></p>
+<ul>
+<li>interation effects</li>
+</ul>
+<p><span class="math display">\[Y_i = \beta_0 + \beta_1X_{i1} + \beta_2X_{i2} + \beta_3X_{i1}X_{i2} + \varepsilon_i\]</span></p>
+<p>can be written as follows:</p>
+<p><span class="math display">\[Y_i = \beta_0 + \beta_1X_{i1} + \beta_2X_{i2} + \beta_3X_{i3} + \varepsilon_i\text{ let }X_{i3} = X_{i1}X_{i2}\]</span></p>
+<ul>
+<li>combination of cases</li>
+</ul>
+<p><span class="math display">\[Y_i = \beta_0 + \beta_1X_{i1} + \beta_2X_{i1}^2 + \beta_3X_{i2} +  \beta_4X_{i2}^2 +  \beta_5X_{i1}X_{i2} + \varepsilon_i\]</span></p>
+<p>can be written as</p>
+<p><span class="math display">\[Y_i = \beta_0 + \beta_1Z_{i1} + \beta_2Z_{i2} + \beta_3Z_{i3} +  \beta_4Z_{i4} +  \beta_5Z_{i5} + \varepsilon_i\]</span></p>
+<p>, where we define <span class="math inline">\(Z_{i1}=X_{i1}, Z_{i2}=X_{i1}^2, Z_{i3}=X_{i2}, Z_{i4}=X_{i2}^2\text{ and }Z_{i5}=X_{i1}X_{i2}\)</span></p>
+<ul>
+<li>meaninf of linear model: refers to linear in the parameters</li>
+</ul>
+</div>
+</div>
+<div id="general-linear-regression-model-in-matrix-terms" class="section level2">
+<h2><span class="header-section-number">7.2</span> General Linear Regression Model in Matrix Terms</h2>
+<p><span class="math display">\[\underset{n \times 1}{\mathbf{Y}} = \underset{n \times p}{\mathbf{X}}\underset{p \times 1}{\boldsymbol{\beta}} + \underset{n \times 1}{\boldsymbol{\varepsilon}}\]</span></p>
+<p>, where</p>
+<p><span class="math display">\[\underset{n \times 1}{\mathbf{Y}} = \begin{bmatrix}y_1 \\ y_2 \\ ... \\y_n\end{bmatrix}, \underset{n \times p}{\mathbf{X}} = \begin{bmatrix}1 &amp; x_{11}  &amp; x_{12} &amp; ... &amp; x_{1,p-1} \\ 1 &amp; x_{21} &amp; x_{22} &amp; ... &amp; x_{2,p-1} \\ ... &amp; ... &amp; ...&amp;  ...  &amp; ... \\ 1  &amp; x_{n1} &amp; x_{n2} &amp; ... &amp; x_{n,p-1}\end{bmatrix}, \underset{p \times 1}{\boldsymbol{\beta}} = \begin{bmatrix}\beta_0 \\ \beta_1 \\ ... \\ \beta_{p-1} \end{bmatrix} and \underset{n \times 1}{\boldsymbol{\varepsilon}} = \begin{bmatrix}\varepsilon_1 \\ \varepsilon_2 \\ ... \\\varepsilon_n\end{bmatrix}\]</span></p>
+<ul>
+<li><span class="math inline">\(\mathbf{Y}\)</span> is a vector of responses</li>
+<li><span class="math inline">\(\mathbf{\beta}\)</span> is a vector of parameters</li>
+<li><span class="math inline">\(\mathbf{X}\)</span> is a matrix of constants</li>
+<li><span class="math inline">\(\boldsymbol{\varepsilon}\)</span> is a vector of independent normal random variables</li>
+<li>expectation <span class="math inline">\(E(\boldsymbol{\varepsilon}) = \mathbf{0}\)</span></li>
+<li>variane-covariance matrix: <span class="math inline">\(\sigma^2(\boldsymbol{\varepsilon}) = \sigma^2\mathbf{I}\)</span></li>
+</ul>
+<p>Consequently, <span class="math inline">\(E(\mathbf{Y}) = \boldsymbol{X\beta}\)</span> and <span class="math inline">\(\sigma^2(\boldsymbol{Y}) = \sigma^2\mathbf{I}\)</span></p>
+</div>
+<div id="estimation-of-regression-coefficients" class="section level2">
+<h2><span class="header-section-number">7.3</span> Estimation of Regression Coefficients</h2>
+<p>The least squares for general linear regression model:</p>
+<p><span class="math display">\[Q = \displaystyle\sum_{i=1}^{n}(Y_i - \beta_{0} - \beta_1X_{i1} - ... - \beta_{p-1}X_{i,p-1})^2\]</span></p>
+<p>The least squares estimators are to minimize Q.</p>
+<p><span class="math display">\[\mathbf{X}&#39;\mathbf{Xb} = \mathbf{X}&#39;\mathbf{Y}\text{ and }\mathbf{b} = (\mathbf{X}&#39;\mathbf{X})^{-1}\mathbf{X}&#39;\mathbf{Y}\]</span></p>
+<p>The method of maximum likelihood leads to the same estimators for normal error regression model, which is obtained by maximizing this likelihood function:</p>
+<p><span class="math display">\[L(\boldsymbol{\beta},sigma^2) = \frac{1}{(2\pi\sigma^2)^{n/2}}exp[-\frac{1}{2\sigma^2}\displaystyle\sum_{i=1}^{n}(Y_i - \beta_0 - \beta_1X_{i1} - ... - \beta_{p-1}X_{i,p-1})^2] \]</span></p>
 
+</div>
 </div>
             </section>
 
@@ -134,12 +227,24 @@ gitbook.start({
 "download": null,
 "toc": {
 "collapse": "none",
-"toc_unnumbered": true
+"toc_unnumbered": true,
+"toc_depth": 1
 }
 });
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

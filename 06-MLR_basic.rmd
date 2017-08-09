@@ -1,1 +1,101 @@
 # Multiple linear regression I
+
+## Multiple Regression Models
+
+### First-Order Model with Two Predictor Variables
+
+$$Y_i = \beta_0 + \beta_1X_{i1} + \beta_2X_{i2} + \varepsilon_i$$
+
+- regression surface/response surface
+- addiive effects or not to interact
+- partial regression coefficients
+
+### First-Order Model with More than Two Predictor Variables
+
+$$Y_i = \beta_0 + \beta_1X_{i1} + \beta_2X_{i2} + ... + \beta_{p-1}X_{i,p-1}+\varepsilon_i$$
+
+$$Y_i = \beta_0 + \displaystyle\sum_{k=1}^{p-1}\beta_{k}X_{ik} + \varepsilon_i$$
+
+$$Y_i = \displaystyle\sum_{k=0}^{p-1}\beta_{k}X_{ik} + \varepsilon_i,\text{ where }X_{i0} \equiv 1$$
+
+- hyperplane: the response function, which is a plane in more than two dimensions.
+
+### General Linear Regression Model
+
+$$Y_i = \beta_0 + \beta_1X_{i1} + \beta_2X_{i2} + ... + \beta_{p-1}X_{i,p-1}+\varepsilon_i$$
+
+where:
+
+- $\beta_0, \beta_2, ..., \beta_{p-1}$ are parameters
+- $X_{i1}, ..., X_{i,p-1}$ are known constants
+- $\varepsilon_i$ are independent $N(0,\sigma^2)$
+- $i = 1, ..., n$
+
+- p-1 predictor variables
+- qualitative predictor variables
+- polynomia regression: 
+
+$$Y_i = \beta_0 + \beta_1X_{i1} + \beta_2X_{i1}^2 + \varepsilon_i$$ 
+
+can be written as 
+
+$$Y_i = \beta_0 + \beta_1X_{i1} + \beta_2X_{i2} + \varepsilon_i\text{ if }X_{i2} = X_i^2$$
+
+- transformed variables: 
+
+$$logY_i = \beta_0 + \beta_1X_{i1} + \beta_2X_{i2} + \varepsilon_i$$
+
+can be treated as a general linear regression model:
+
+$$Y_i^{'} = \beta_0 + \beta_1X_{i1} + \beta_2X_{i2} + \varepsilon_i\text{ if }Y_i^{'}=logY_i$$
+
+- interation effects
+
+$$Y_i = \beta_0 + \beta_1X_{i1} + \beta_2X_{i2} + \beta_3X_{i1}X_{i2} + \varepsilon_i$$
+
+can be written as follows:
+
+$$Y_i = \beta_0 + \beta_1X_{i1} + \beta_2X_{i2} + \beta_3X_{i3} + \varepsilon_i\text{ let }X_{i3} = X_{i1}X_{i2}$$
+
+- combination of cases
+
+$$Y_i = \beta_0 + \beta_1X_{i1} + \beta_2X_{i1}^2 + \beta_3X_{i2} +  \beta_4X_{i2}^2 +  \beta_5X_{i1}X_{i2} + \varepsilon_i$$
+
+can be written as
+
+$$Y_i = \beta_0 + \beta_1Z_{i1} + \beta_2Z_{i2} + \beta_3Z_{i3} +  \beta_4Z_{i4} +  \beta_5Z_{i5} + \varepsilon_i$$
+
+, where we define $Z_{i1}=X_{i1}, Z_{i2}=X_{i1}^2, Z_{i3}=X_{i2}, Z_{i4}=X_{i2}^2\text{ and }Z_{i5}=X_{i1}X_{i2}$
+
+- meaninf of linear model: refers to linear in the parameters
+
+## General Linear Regression Model in Matrix Terms
+
+$$\underset{n \times 1}{\mathbf{Y}} = \underset{n \times p}{\mathbf{X}}\underset{p \times 1}{\boldsymbol{\beta}} + \underset{n \times 1}{\boldsymbol{\varepsilon}}$$
+
+, where
+
+$$\underset{n \times 1}{\mathbf{Y}} = \begin{bmatrix}y_1 \\ y_2 \\ ... \\y_n\end{bmatrix}, \underset{n \times p}{\mathbf{X}} = \begin{bmatrix}1 & x_{11}  & x_{12} & ... & x_{1,p-1} \\ 1 & x_{21} & x_{22} & ... & x_{2,p-1} \\ ... & ... & ...&  ...  & ... \\ 1  & x_{n1} & x_{n2} & ... & x_{n,p-1}\end{bmatrix}, \underset{p \times 1}{\boldsymbol{\beta}} = \begin{bmatrix}\beta_0 \\ \beta_1 \\ ... \\ \beta_{p-1} \end{bmatrix} and \underset{n \times 1}{\boldsymbol{\varepsilon}} = \begin{bmatrix}\varepsilon_1 \\ \varepsilon_2 \\ ... \\\varepsilon_n\end{bmatrix}$$
+
+- $\mathbf{Y}$ is a vector of responses
+- $\mathbf{\beta}$ is a vector of parameters
+- $\mathbf{X}$ is a matrix of constants
+- $\boldsymbol{\varepsilon}$ is a vector of independent normal random variables
+- expectation $E(\boldsymbol{\varepsilon}) = \mathbf{0}$
+- variane-covariance matrix: $\sigma^2(\boldsymbol{\varepsilon}) = \sigma^2\mathbf{I}$
+
+Consequently, $E(\mathbf{Y}) = \boldsymbol{X\beta}$ and $\sigma^2(\boldsymbol{Y}) = \sigma^2\mathbf{I}$
+
+## Estimation of Regression Coefficients
+
+The least squares for general linear regression model:
+
+$$Q = \displaystyle\sum_{i=1}^{n}(Y_i - \beta_{0} - \beta_1X_{i1} - ... - \beta_{p-1}X_{i,p-1})^2$$
+
+The least squares estimators are to minimize Q.
+
+$$\mathbf{X}'\mathbf{Xb} = \mathbf{X}'\mathbf{Y}\text{ and }\mathbf{b} = (\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'\mathbf{Y}$$
+
+The method of maximum likelihood leads to the same estimators for normal error regression model, which is obtained by maximizing this likelihood function:
+
+$$L(\boldsymbol{\beta},sigma^2) = \frac{1}{(2\pi\sigma^2)^{n/2}}exp[-\frac{1}{2\sigma^2}\displaystyle\sum_{i=1}^{n}(Y_i - \beta_0 - \beta_1X_{i1} - ... - \beta_{p-1}X_{i,p-1})^2] $$
