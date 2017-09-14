@@ -49,7 +49,7 @@ can be treated as a general linear regression model:
 
 $$Y_i^{'} = \beta_0 + \beta_1X_{i1} + \beta_2X_{i2} + \varepsilon_i\text{ if }Y_i^{'}=logY_i$$
 
-- interation effects
+- interaction effects
 
 $$Y_i = \beta_0 + \beta_1X_{i1} + \beta_2X_{i2} + \beta_3X_{i1}X_{i2} + \varepsilon_i$$
 
@@ -67,7 +67,7 @@ $$Y_i = \beta_0 + \beta_1Z_{i1} + \beta_2Z_{i2} + \beta_3Z_{i3} +  \beta_4Z_{i4}
 
 , where we define $Z_{i1}=X_{i1}, Z_{i2}=X_{i1}^2, Z_{i3}=X_{i2}, Z_{i4}=X_{i2}^2\text{ and }Z_{i5}=X_{i1}X_{i2}$
 
-- meaninf of linear model: refers to linear in the parameters
+- meaning of linear model: refers to linear in the parameters
 
 ## General Linear Regression Model in Matrix Terms
 
