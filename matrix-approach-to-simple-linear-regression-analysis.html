@@ -160,6 +160,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="multiple-linear-regression-i.html"><a href="multiple-linear-regression-i.html#general-linear-regression-model-in-matrix-terms"><i class="fa fa-check"></i><b>7.2</b> General Linear Regression Model in Matrix Terms</a></li>
 <li class="chapter" data-level="7.3" data-path="multiple-linear-regression-i.html"><a href="multiple-linear-regression-i.html#estimation-of-regression-coefficients"><i class="fa fa-check"></i><b>7.3</b> Estimation of Regression Coefficients</a></li>
+<li class="chapter" data-level="7.4" data-path="multiple-linear-regression-i.html"><a href="multiple-linear-regression-i.html#fitted-values-and-residuals-1"><i class="fa fa-check"></i><b>7.4</b> Fitted Values and Residuals</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="multiple-regression-ii.html"><a href="multiple-regression-ii.html"><i class="fa fa-check"></i><b>8</b> Multiple Regression II</a><ul>
 <li class="chapter" data-level="8.1" data-path="multiple-regression-ii.html"><a href="multiple-regression-ii.html#extra-sums-of-squares"><i class="fa fa-check"></i><b>8.1</b> Extra Sums of Squares</a></li>
@@ -300,7 +301,7 @@ Published with <a href="https://github.com/rstudio/bookdown" target="blank">book
 <p><span class="math display">\[\mathbf{A}_{2 \times 2}^{-1} = \begin{bmatrix} \frac{d}{D} &amp; \frac{-b}{D} \\ \frac{-c}{D} &amp; \frac{a}{D} \end{bmatrix}\]</span></p>
 <p>where:</p>
 <p><span class="math display">\[D = ad - bc\]</span></p>
-<p>D is called the determinant of the matrix <strong>A</strong>. If <strong>A</strong> were singular, its determinant would equal zero and no inverse of A would exist.</p>
+<p>D is called the <strong>determinant</strong>(行列式) of the matrix <strong>A</strong>. If <strong>A</strong> were singular, its determinant would equal zero and no inverse of A would exist.</p>
 <p>Regression Example</p>
 <p><span class="math display">\[\mathbf{X}&#39;\mathbf{X}_{2 \times 2} = \begin{bmatrix} n &amp; \sum X_{i} \\ \sum X_{i} &amp; \sum X_{i}^{2} \end{bmatrix}\]</span></p>
 <p><span class="math display">\[ a = n, b = c = \sum{X_{i}}, d = \sum{X_{i}^{2}} \]</span></p>
@@ -335,7 +336,7 @@ Published with <a href="https://github.com/rstudio/bookdown" target="blank">book
 <ul>
 <li><strong>Variance-Covariance Matrix of Random Vector</strong></li>
 </ul>
-<p><span class="math display">\[\sigma^2(\mathbf{Y})_{n \times n} = \begin{bmatrix} \sigma^2(Y_1) &amp; \sigma^2(Y_1,Y_2) &amp; ... &amp; \sigma^2(Y_1, Y_n) \\  \sigma^2(Y_2,Y_1) &amp; \sigma^2(Y_2) &amp; ... &amp; \sigma^2(Y_2, Y_n) \\ ... &amp; ... &amp; ... &amp; ...\\  \sigma^2(Y_n, Y_1) &amp;  \sigma^2(Y_n, Y_2) &amp; ... &amp; \sigma^2(Y_n) \end{bmatrix}\]</span></p>
+<p><span class="math display">\[\sigma^2(\mathbf{Y})_{n \times n} = \begin{bmatrix} \sigma^2(Y_1) &amp; \sigma(Y_1,Y_2) &amp; ... &amp; \sigma(Y_1, Y_n) \\  \sigma(Y_2,Y_1) &amp; \sigma^2(Y_2) &amp; ... &amp; \sigma(Y_2, Y_n) \\ ... &amp; ... &amp; ... &amp; ...\\  \sigma(Y_n, Y_1) &amp;  \sigma(Y_n, Y_2) &amp; ... &amp; \sigma^2(Y_n) \end{bmatrix}\]</span></p>
 <p>which is a symmetric matrix.</p>
 <ul>
 <li>Some Basic Rules</li>
@@ -371,6 +372,18 @@ Published with <a href="https://github.com/rstudio/bookdown" target="blank">book
 <p><span class="math display">\[\mathbf{HH} = \mathbf{H}\]</span></p>
 <p><span class="math display">\[\mathbf{e} = \mathbf{Y} - \mathbf{\hat{Y}} = \mathbf{Y} - \mathbf{HY} = (\mathbf{I}-\mathbf{H})\mathbf{Y}\]</span></p>
 <p>and the matrix <span class="math inline">\(\mathbf{I}-\mathbf{H}\)</span>, like the matrix <span class="math inline">\(\mathbf{H}\)</span>, is symmetric and idempotent.</p>
+<p>The variance-covariance matrix of residuals <strong>e</strong>:</p>
+<p><span class="math display">\[\sigma^2(\mathbf{e}) = \sigma^2 \times (\mathbf{I}-\mathbf{H})\]</span></p>
+<p>and is estimated by:</p>
+<p><span class="math display">\[s^2(\mathbf{3}) = MSE \times (\mathbf{I}-\mathbf{H})\]</span></p>
+<ul>
+<li>Proof:</li>
+</ul>
+<p><span class="math display">\[\sigma^2(\mathbf{e}) = \sigma^2((\mathbf{I}-\mathbf{H})\mathbf{Y}) = (\mathbf{I}-\mathbf{H})\times \sigma^2(\mathbf{Y}) \times (\mathbf{I}-\mathbf{H})&#39;\]</span></p>
+<p><span class="math display">\[\sigma^2(\mathbf{Y})= \sigma^2 \times \mathbf{I}\]</span></p>
+<p><span class="math display">\[(\mathbf{I}-\mathbf{H})&#39; = (\mathbf{I}-\mathbf{H})\]</span></p>
+<p><span class="math display">\[(\mathbf{I}-\mathbf{H})(\mathbf{I}-\mathbf{H}) = \mathbf{I}-\mathbf{H}\]</span></p>
+<p><span class="math display">\[\sigma^2(\mathbf{e}) = \sigma^2 \times (\mathbf{I}-\mathbf{H})\]</span></p>
 </div>
 <div id="analysis-of-variance-results" class="section level2">
 <h2><span class="header-section-number">6.12</span> Analysis of Variance Results</h2>

@@ -98,4 +98,7 @@ $$\mathbf{X}'\mathbf{Xb} = \mathbf{X}'\mathbf{Y}\text{ and }\mathbf{b} = (\mathb
 
 The method of maximum likelihood leads to the same estimators for normal error regression model, which is obtained by maximizing this likelihood function:
 
-$$L(\boldsymbol{\beta},sigma^2) = \frac{1}{(2\pi\sigma^2)^{n/2}}exp[-\frac{1}{2\sigma^2}\displaystyle\sum_{i=1}^{n}(Y_i - \beta_0 - \beta_1X_{i1} - ... - \beta_{p-1}X_{i,p-1})^2] $$
+$$L(\boldsymbol{\beta},\sigma^2) = \frac{1}{(2\pi\sigma^2)^{n/2}}exp[-\frac{1}{2\sigma^2}\displaystyle\sum_{i=1}^{n}(Y_i - \beta_0 - \beta_1X_{i1} - ... - \beta_{p-1}X_{i,p-1})^2] $$
+
+## Fitted Values and Residuals
+

@@ -160,6 +160,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="multiple-linear-regression-i.html"><a href="multiple-linear-regression-i.html#general-linear-regression-model-in-matrix-terms"><i class="fa fa-check"></i><b>7.2</b> General Linear Regression Model in Matrix Terms</a></li>
 <li class="chapter" data-level="7.3" data-path="multiple-linear-regression-i.html"><a href="multiple-linear-regression-i.html#estimation-of-regression-coefficients"><i class="fa fa-check"></i><b>7.3</b> Estimation of Regression Coefficients</a></li>
+<li class="chapter" data-level="7.4" data-path="multiple-linear-regression-i.html"><a href="multiple-linear-regression-i.html#fitted-values-and-residuals-1"><i class="fa fa-check"></i><b>7.4</b> Fitted Values and Residuals</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="multiple-regression-ii.html"><a href="multiple-regression-ii.html"><i class="fa fa-check"></i><b>8</b> Multiple Regression II</a><ul>
 <li class="chapter" data-level="8.1" data-path="multiple-regression-ii.html"><a href="multiple-regression-ii.html#extra-sums-of-squares"><i class="fa fa-check"></i><b>8.1</b> Extra Sums of Squares</a></li>
@@ -268,7 +269,10 @@ Published with <a href="https://github.com/rstudio/bookdown" target="blank">book
 <p>The least squares estimators are to minimize Q.</p>
 <p><span class="math display">\[\mathbf{X}&#39;\mathbf{Xb} = \mathbf{X}&#39;\mathbf{Y}\text{ and }\mathbf{b} = (\mathbf{X}&#39;\mathbf{X})^{-1}\mathbf{X}&#39;\mathbf{Y}\]</span></p>
 <p>The method of maximum likelihood leads to the same estimators for normal error regression model, which is obtained by maximizing this likelihood function:</p>
-<p><span class="math display">\[L(\boldsymbol{\beta},sigma^2) = \frac{1}{(2\pi\sigma^2)^{n/2}}exp[-\frac{1}{2\sigma^2}\displaystyle\sum_{i=1}^{n}(Y_i - \beta_0 - \beta_1X_{i1} - ... - \beta_{p-1}X_{i,p-1})^2] \]</span></p>
+<p><span class="math display">\[L(\boldsymbol{\beta},\sigma^2) = \frac{1}{(2\pi\sigma^2)^{n/2}}exp[-\frac{1}{2\sigma^2}\displaystyle\sum_{i=1}^{n}(Y_i - \beta_0 - \beta_1X_{i1} - ... - \beta_{p-1}X_{i,p-1})^2] \]</span></p>
+</div>
+<div id="fitted-values-and-residuals-1" class="section level2">
+<h2><span class="header-section-number">7.4</span> Fitted Values and Residuals</h2>
 
 </div>
 </div>

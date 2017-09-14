@@ -104,7 +104,7 @@ where:
 
 $$D = ad - bc$$
 
-D is called the determinant of the matrix **A**. If **A** were singular, its determinant would equal zero and no inverse of A would exist.
+D is called the **determinant**(行列式) of the matrix **A**. If **A** were singular, its determinant would equal zero and no inverse of A would exist.
 
 Regression Example
 
@@ -141,7 +141,7 @@ $$\mathbf{Y}_{3 \times 1} = \begin{bmatrix} Y_1 \\ Y_2 \\ Y_3 \end{bmatrix}\text
 
 - **Variance-Covariance Matrix of Random Vector**
 
-$$\sigma^2(\mathbf{Y})_{n \times n} = \begin{bmatrix} \sigma^2(Y_1) & \sigma^2(Y_1,Y_2) & ... & \sigma^2(Y_1, Y_n) \\  \sigma^2(Y_2,Y_1) & \sigma^2(Y_2) & ... & \sigma^2(Y_2, Y_n) \\ ... & ... & ... & ...\\  \sigma^2(Y_n, Y_1) &  \sigma^2(Y_n, Y_2) & ... & \sigma^2(Y_n) \end{bmatrix}$$
+$$\sigma^2(\mathbf{Y})_{n \times n} = \begin{bmatrix} \sigma^2(Y_1) & \sigma(Y_1,Y_2) & ... & \sigma(Y_1, Y_n) \\  \sigma(Y_2,Y_1) & \sigma^2(Y_2) & ... & \sigma(Y_2, Y_n) \\ ... & ... & ... & ...\\  \sigma(Y_n, Y_1) &  \sigma(Y_n, Y_2) & ... & \sigma^2(Y_n) \end{bmatrix}$$
 
 which is a symmetric matrix.
 
@@ -194,6 +194,27 @@ $$\mathbf{HH} = \mathbf{H}$$
 $$\mathbf{e} = \mathbf{Y} - \mathbf{\hat{Y}} = \mathbf{Y} - \mathbf{HY} = (\mathbf{I}-\mathbf{H})\mathbf{Y}$$
 
 and the matrix $\mathbf{I}-\mathbf{H}$, like the matrix $\mathbf{H}$, is symmetric and idempotent.
+
+The variance-covariance matrix of residuals **e**:
+
+$$\sigma^2(\mathbf{e}) = \sigma^2 \times (\mathbf{I}-\mathbf{H})$$
+
+and is estimated by:
+
+$$s^2(\mathbf{3}) = MSE \times (\mathbf{I}-\mathbf{H})$$
+
+- Proof:
+
+$$\sigma^2(\mathbf{e}) = \sigma^2((\mathbf{I}-\mathbf{H})\mathbf{Y}) = (\mathbf{I}-\mathbf{H})\times \sigma^2(\mathbf{Y}) \times (\mathbf{I}-\mathbf{H})'$$
+
+$$\sigma^2(\mathbf{Y})= \sigma^2 \times \mathbf{I}$$
+
+$$(\mathbf{I}-\mathbf{H})' = (\mathbf{I}-\mathbf{H})$$
+
+$$(\mathbf{I}-\mathbf{H})(\mathbf{I}-\mathbf{H}) = \mathbf{I}-\mathbf{H}$$
+
+
+$$\sigma^2(\mathbf{e}) = \sigma^2 \times (\mathbf{I}-\mathbf{H})$$
 
 ## Analysis of Variance Results
 
