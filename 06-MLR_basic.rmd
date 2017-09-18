@@ -102,3 +102,94 @@ $$L(\boldsymbol{\beta},\sigma^2) = \frac{1}{(2\pi\sigma^2)^{n/2}}exp[-\frac{1}{2
 
 ## Fitted Values and Residuals
 
+$$\hat{\mathbf{Y}} = \mathbf{X}\mathbf{b} = \mathbf{X}(\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'\mathbf{Y}$$
+
+or
+
+$$\hat{\mathbf{Y}} = \mathbf{H}\mathbf{Y}\text{, with }\underset{n \times n}{\mathbf{H}} = \mathbf{X}(\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'$$
+
+The matrix **H** is called **hat matrix**. And it's symmetric and has the special property (called idempotency):
+
+$$\mathbf{HH} = \mathbf{H}$$
+
+$$\mathbf{e} = \mathbf{Y} - \mathbf{\hat{Y}} = \mathbf{Y} - \mathbf{HY} = (\mathbf{I}-\mathbf{H})\mathbf{Y}$$
+
+and the matrix $\mathbf{I}-\mathbf{H}$, like the matrix $\mathbf{H}$, is symmetric and idempotent.
+
+The variance-covariance matrix of residuals **e**:
+
+$$\sigma^2(\mathbf{e}) = \sigma^2 \times (\mathbf{I}-\mathbf{H})$$
+
+and is estimated by:
+
+$$s^2(\mathbf{3}) = MSE \times (\mathbf{I}-\mathbf{H})$$
+
+## Analysis of Variance Results
+
+$$SSTO = \mathbf{Y}'[\mathbf{I} - \frac{1}{n}\mathbf{J}]\mathbf{Y}$$
+
+$$SSE = \mathbf{Y}'[\mathbf{I} - \mathbf{H}]\mathbf{Y}$$
+
+$$SSR = \mathbf{Y}'[\mathbf{H} - \frac{1}{n}\mathbf{J}]\mathbf{Y}$$
+
+$$MSR = \frac{SSR}{p-1}$$
+
+$$MSE=\frac{SSE}{n-p}$$
+
+|Source of Variation|SS|df|MS|
+|-----|------------|------|-----|
+|Regression|$SSR = \mathbf{Y}'[\mathbf{H} - \frac{1}{n}\mathbf{J}]\mathbf{Y}$|p-1|$MSR = \frac{SSR}{p-1}$|
+|Error|$SSE = \mathbf{Y}'[\mathbf{I} - \mathbf{H}]\mathbf{Y}$|n-p|$MSE = \frac{SSE}{n-p}$|
+|Total|$SSTO = \mathbf{Y}'[\mathbf{I} - \frac{1}{n}\mathbf{J}]\mathbf{Y}$|n-1|
+
+- F Test for Regression Relation
+
+$$H_0: \beta_1=\beta_2=...=\beta_{p-1}=0$$
+
+$$H_1:\text{ not all }\beta_{k}(k=1....p-1)$$ equal zero
+
+$$F^* = \frac{MSR}{MSE} \sim F(p-1,n-p)$$
+
+- Coefficient of Multiple Determination
+
+$$R^2 = \frac{SSR}{SSTO} = 1 - \frac{SSE}{SSTO}$$
+
+Adding more X variables to the regression model can only increase $R^2$ and never reduce it.
+
+The adjusted coefficient of multiple determination, denoted by $R^2_a$:
+
+$$R^2_a = 1-\frac{\frac{SSE}{n-p}}{\frac{SSTO}{n-1}} = 1-(\frac{n-1}{n-p})\frac{SSE}{SSTO}$$
+
+- Coefficient of Multiple Correlation
+
+$$R = \sqrt{R^2}$$
+
+## Inferences about Regression Parameters
+
+$$E(\mathbf{b}) = \boldsymbol{\beta}$$
+
+$$\sigma^2(\mathbf{b}) = \sigma^2 \times (\mathbf{X}'\mathbf{X})^{-1} $$
+
+$$s^2(\mathbf{b}) = MSE \times (\mathbf{X}'\mathbf{X})^{-1}$$
+
+- Interval Estimation of $\beta_k$
+
+$$\frac{b_k - \beta_k}{s(b_k)} \sim t(n-p), k = 0,1, ...., p-1$$
+
+$$b_k \pm t(1-\frac{\alpha}{2};n-p)s(b_k)$$
+
+- Tests for $\beta_k$
+
+$$H_0: \beta_k = 0$$
+
+$$H_1: \beta_k \neq 0$$
+
+$$t^* = \frac{b_k}{s(b_k)}$$
+
+- joint inferences
+
+The Bonferroni joint confidence intervals can be used to estimate several regression coefficients simultaneously.
+
+If g parameters are to be estimated jointly , then
+
+$$b_k \pm t(1-\frac{\alpha}{2g};n-p)s(b_k)$$

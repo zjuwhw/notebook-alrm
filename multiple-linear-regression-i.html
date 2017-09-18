@@ -161,6 +161,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="7.2" data-path="multiple-linear-regression-i.html"><a href="multiple-linear-regression-i.html#general-linear-regression-model-in-matrix-terms"><i class="fa fa-check"></i><b>7.2</b> General Linear Regression Model in Matrix Terms</a></li>
 <li class="chapter" data-level="7.3" data-path="multiple-linear-regression-i.html"><a href="multiple-linear-regression-i.html#estimation-of-regression-coefficients"><i class="fa fa-check"></i><b>7.3</b> Estimation of Regression Coefficients</a></li>
 <li class="chapter" data-level="7.4" data-path="multiple-linear-regression-i.html"><a href="multiple-linear-regression-i.html#fitted-values-and-residuals-1"><i class="fa fa-check"></i><b>7.4</b> Fitted Values and Residuals</a></li>
+<li class="chapter" data-level="7.5" data-path="multiple-linear-regression-i.html"><a href="multiple-linear-regression-i.html#analysis-of-variance-results-1"><i class="fa fa-check"></i><b>7.5</b> Analysis of Variance Results</a></li>
+<li class="chapter" data-level="7.6" data-path="multiple-linear-regression-i.html"><a href="multiple-linear-regression-i.html#inferences-about-regression-parameters"><i class="fa fa-check"></i><b>7.6</b> Inferences about Regression Parameters</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="multiple-regression-ii.html"><a href="multiple-regression-ii.html"><i class="fa fa-check"></i><b>8</b> Multiple Regression II</a><ul>
 <li class="chapter" data-level="8.1" data-path="multiple-regression-ii.html"><a href="multiple-regression-ii.html#extra-sums-of-squares"><i class="fa fa-check"></i><b>8.1</b> Extra Sums of Squares</a></li>
@@ -273,6 +275,101 @@ Published with <a href="https://github.com/rstudio/bookdown" target="blank">book
 </div>
 <div id="fitted-values-and-residuals-1" class="section level2">
 <h2><span class="header-section-number">7.4</span> Fitted Values and Residuals</h2>
+<p><span class="math display">\[\hat{\mathbf{Y}} = \mathbf{X}\mathbf{b} = \mathbf{X}(\mathbf{X}&#39;\mathbf{X})^{-1}\mathbf{X}&#39;\mathbf{Y}\]</span></p>
+<p>or</p>
+<p><span class="math display">\[\hat{\mathbf{Y}} = \mathbf{H}\mathbf{Y}\text{, with }\underset{n \times n}{\mathbf{H}} = \mathbf{X}(\mathbf{X}&#39;\mathbf{X})^{-1}\mathbf{X}&#39;\]</span></p>
+<p>The matrix <strong>H</strong> is called <strong>hat matrix</strong>. And it’s symmetric and has the special property (called idempotency):</p>
+<p><span class="math display">\[\mathbf{HH} = \mathbf{H}\]</span></p>
+<p><span class="math display">\[\mathbf{e} = \mathbf{Y} - \mathbf{\hat{Y}} = \mathbf{Y} - \mathbf{HY} = (\mathbf{I}-\mathbf{H})\mathbf{Y}\]</span></p>
+<p>and the matrix <span class="math inline">\(\mathbf{I}-\mathbf{H}\)</span>, like the matrix <span class="math inline">\(\mathbf{H}\)</span>, is symmetric and idempotent.</p>
+<p>The variance-covariance matrix of residuals <strong>e</strong>:</p>
+<p><span class="math display">\[\sigma^2(\mathbf{e}) = \sigma^2 \times (\mathbf{I}-\mathbf{H})\]</span></p>
+<p>and is estimated by:</p>
+<p><span class="math display">\[s^2(\mathbf{3}) = MSE \times (\mathbf{I}-\mathbf{H})\]</span></p>
+</div>
+<div id="analysis-of-variance-results-1" class="section level2">
+<h2><span class="header-section-number">7.5</span> Analysis of Variance Results</h2>
+<p><span class="math display">\[SSTO = \mathbf{Y}&#39;[\mathbf{I} - \frac{1}{n}\mathbf{J}]\mathbf{Y}\]</span></p>
+<p><span class="math display">\[SSE = \mathbf{Y}&#39;[\mathbf{I} - \mathbf{H}]\mathbf{Y}\]</span></p>
+<p><span class="math display">\[SSR = \mathbf{Y}&#39;[\mathbf{H} - \frac{1}{n}\mathbf{J}]\mathbf{Y}\]</span></p>
+<p><span class="math display">\[MSR = \frac{SSR}{p-1}\]</span></p>
+<p><span class="math display">\[MSE=\frac{SSE}{n-p}\]</span></p>
+<table style="width:44%;">
+<colgroup>
+<col width="8%" />
+<col width="18%" />
+<col width="9%" />
+<col width="8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Source of Variation</th>
+<th>SS</th>
+<th>df</th>
+<th>MS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Regression</td>
+<td><span class="math inline">\(SSR = \mathbf{Y}&#39;[\mathbf{H} - \frac{1}{n}\mathbf{J}]\mathbf{Y}\)</span></td>
+<td>p-1</td>
+<td><span class="math inline">\(MSR = \frac{SSR}{p-1}\)</span></td>
+</tr>
+<tr class="even">
+<td>Error</td>
+<td><span class="math inline">\(SSE = \mathbf{Y}&#39;[\mathbf{I} - \mathbf{H}]\mathbf{Y}\)</span></td>
+<td>n-p</td>
+<td><span class="math inline">\(MSE = \frac{SSE}{n-p}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td><span class="math inline">\(SSTO = \mathbf{Y}&#39;[\mathbf{I} - \frac{1}{n}\mathbf{J}]\mathbf{Y}\)</span></td>
+<td>n-1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>F Test for Regression Relation</li>
+</ul>
+<p><span class="math display">\[H_0: \beta_1=\beta_2=...=\beta_{p-1}=0\]</span></p>
+<p><span class="math display">\[H_1:\text{ not all }\beta_{k}(k=1....p-1)\]</span> equal zero</p>
+<p><span class="math display">\[F^* = \frac{MSR}{MSE} \sim F(p-1,n-p)\]</span></p>
+<ul>
+<li>Coefficient of Multiple Determination</li>
+</ul>
+<p><span class="math display">\[R^2 = \frac{SSR}{SSTO} = 1 - \frac{SSE}{SSTO}\]</span></p>
+<p>Adding more X variables to the regression model can only increase <span class="math inline">\(R^2\)</span> and never reduce it.</p>
+<p>The adjusted coefficient of multiple determination, denoted by <span class="math inline">\(R^2_a\)</span>:</p>
+<p><span class="math display">\[R^2_a = 1-\frac{\frac{SSE}{n-p}}{\frac{SSTO}{n-1}} = 1-(\frac{n-1}{n-p})\frac{SSE}{SSTO}\]</span></p>
+<ul>
+<li>Coefficient of Multiple Correlation</li>
+</ul>
+<p><span class="math display">\[R = \sqrt{R^2}\]</span></p>
+</div>
+<div id="inferences-about-regression-parameters" class="section level2">
+<h2><span class="header-section-number">7.6</span> Inferences about Regression Parameters</h2>
+<p><span class="math display">\[E(\mathbf{b}) = \boldsymbol{\beta}\]</span></p>
+<p><span class="math display">\[\sigma^2(\mathbf{b}) = \sigma^2 \times (\mathbf{X}&#39;\mathbf{X})^{-1} \]</span></p>
+<p><span class="math display">\[s^2(\mathbf{b}) = MSE \times (\mathbf{X}&#39;\mathbf{X})^{-1}\]</span></p>
+<ul>
+<li>Interval Estimation of <span class="math inline">\(\beta_k\)</span></li>
+</ul>
+<p><span class="math display">\[\frac{b_k - \beta_k}{s(b_k)} \sim t(n-p), k = 0,1, ...., p-1\]</span></p>
+<p><span class="math display">\[b_k \pm t(1-\frac{\alpha}{2};n-p)s(b_k)\]</span></p>
+<ul>
+<li>Tests for <span class="math inline">\(\beta_k\)</span></li>
+</ul>
+<p><span class="math display">\[H_0: \beta_k = 0\]</span></p>
+<p><span class="math display">\[H_1: \beta_k \neq 0\]</span></p>
+<p><span class="math display">\[t^* = \frac{b_k}{s(b_k)}\]</span></p>
+<ul>
+<li>joint inferences</li>
+</ul>
+<p>The Bonferroni joint confidence intervals can be used to estimate several regression coefficients simultaneously.</p>
+<p>If g parameters are to be estimated jointly , then</p>
+<p><span class="math display">\[b_k \pm t(1-\frac{\alpha}{2g};n-p)s(b_k)\]</span></p>
 
 </div>
 </div>
