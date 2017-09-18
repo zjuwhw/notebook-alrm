@@ -188,8 +188,8 @@ So we can get the maximu likelihood estimator:
 |:--|:--|
 |$\beta_0$|$\hat{\beta_0} = b_0$|
 |$\beta_1$|$\hat{\beta_1} = b_1$|
-|$\sgima^2$|$\hat{\sigma^2} = \frac{\sum(Y_i-\hat{Y_i})^2}{n}$|
+|$\sigma^2$|$\hat{\sigma^2} = \frac{\sum(Y_i-\hat{Y_i})^2}{n}$|
 
-The maximum likelihood estimator $\sgima^2$ is biased. The unbiased one is MSE or $s^2$.
+The maximum likelihood estimator $\sigma^2$ is biased. The unbiased one is MSE or $s^2$.
 
 $$s^2 = MSE = \frac{n}{n-2}\hat{\sigma^2}$$
