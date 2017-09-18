@@ -379,6 +379,7 @@ Published with <a href="https://github.com/rstudio/bookdown" target="blank">book
 </ul></li>
 <li>degrees of freedom: n - 2, because two degrees of freedom are lost due to estimating <span class="math inline">\(\beta_{0}\)</span> and <span class="math inline">\(\beta_{1}\)</span> to get <span class="math inline">\(\hat{Y}_{i}\)</span></li>
 <li>MSE (error/residual mean square): <span class="math inline">\(s^{2} = MSE = \frac{SSE}{n-2}\)</span></li>
+<li><span class="math inline">\(E(MSE) = \sigma^2\)</span> (Note: <span class="math inline">\(SSE/\sigma^2 \sim \chi^2(n-2)\)</span>), so MSE is an unbiased estimator of <span class="math inline">\(\sigma^2\)</span></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -408,9 +409,34 @@ So, L(μ = 259) &gt; L(μ = 230)
 The method of maximum likelihood is to estimate prarametes to get maximum L.
 It can be shown that for a normal population,
 the maximum likelihood estimator of μ is the smaple mean</code></pre>
-<p>Fro regression model, the likelihood function for n observations is</p>
+<p>For regression model, the likelihood function for n observations is</p>
 <p><span class="math display">\[L(\beta_{0}, \beta_{1}, \sigma^{2}) = \displaystyle\Pi_{i=1}^{n}\frac{1}{(2\pi\sigma^{2})^{1/2}}exp[-\frac{1}{2\sigma^{2}}(Y_{i} - \beta_{0} - \beta_{1}X_{i})^{2}]\]</span></p>
-<p><span class="math display">\[L(\beta_{0}, \beta_{1}, \sigma^{2}) = \frac{1}{(2\pi\sigma^{2})^{1/2}}exp[-\frac{1}{2\sigma^{2}}\displaystyle\sum_{i=1}^{n}(Y_{i} - \beta_{0} - \beta_{1}X_{i})^{2}]\]</span></p>
+<p><span class="math display">\[= \frac{1}{(2\pi\sigma^{2})^{1/2}}exp[-\frac{1}{2\sigma^{2}}\displaystyle\sum_{i=1}^{n}(Y_{i} - \beta_{0} - \beta_{1}X_{i})^{2}]\]</span></p>
+<p>So we can get the maximu likelihood estimator:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Parameter</th>
+<th align="left">Maximum Likelihood Estimator</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\beta_0\)</span></td>
+<td align="left"><span class="math inline">\(\hat{\beta_0} = b_0\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\beta_1\)</span></td>
+<td align="left"><span class="math inline">\(\hat{\beta_1} = b_1\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\sgima^2\)</span></td>
+<td align="left"><span class="math inline">\(\hat{\sigma^2} = \frac{\sum(Y_i-\hat{Y_i})^2}{n}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The maximum likelihood estimator <span class="math inline">\(\sgima^2\)</span> is biased. The unbiased one is MSE or <span class="math inline">\(s^2\)</span>.</p>
+<p><span class="math display">\[s^2 = MSE = \frac{n}{n-2}\hat{\sigma^2}\]</span></p>
 
 </div>
 </div>

@@ -148,7 +148,7 @@ $$e_{i} = Y_{i} - \hat{Y}_{i}$$
 			- $SSE = \displaystyle\sum_{i=1}^{n}e_{i}^{2}$
 		- degrees of freedom: n - 2, because two degrees of freedom are lost due to estimating $\beta_{0}$ and $\beta_{1}$ to get $\hat{Y}_{i}$
 		- MSE (error/residual mean square): $s^{2} = MSE = \frac{SSE}{n-2}$
-
+		- $E(MSE) = \sigma^2$ (Note: $SSE/\sigma^2 \sim \chi^2(n-2)$), so MSE is an unbiased estimator of $\sigma^2$
 
 ## Normal Error Regression Model
 
@@ -176,8 +176,20 @@ It can be shown that for a normal population,
 the maximum likelihood estimator of μ is the smaple mean
 ```
 
-Fro regression model, the likelihood function for n observations is 
+For regression model, the likelihood function for n observations is 
 
 $$L(\beta_{0}, \beta_{1}, \sigma^{2}) = \displaystyle\Pi_{i=1}^{n}\frac{1}{(2\pi\sigma^{2})^{1/2}}exp[-\frac{1}{2\sigma^{2}}(Y_{i} - \beta_{0} - \beta_{1}X_{i})^{2}]$$
 
-$$L(\beta_{0}, \beta_{1}, \sigma^{2}) = \frac{1}{(2\pi\sigma^{2})^{1/2}}exp[-\frac{1}{2\sigma^{2}}\displaystyle\sum_{i=1}^{n}(Y_{i} - \beta_{0} - \beta_{1}X_{i})^{2}]$$
+$$= \frac{1}{(2\pi\sigma^{2})^{1/2}}exp[-\frac{1}{2\sigma^{2}}\displaystyle\sum_{i=1}^{n}(Y_{i} - \beta_{0} - \beta_{1}X_{i})^{2}]$$
+
+So we can get the maximu likelihood estimator:
+
+|Parameter |Maximum Likelihood Estimator|
+|:--|:--|
+|$\beta_0$|$\hat{\beta_0} = b_0$|
+|$\beta_1$|$\hat{\beta_1} = b_1$|
+|$\sgima^2$|$\hat{\sigma^2} = \frac{\sum(Y_i-\hat{Y_i})^2}{n}$|
+
+The maximum likelihood estimator $\sgima^2$ is biased. The unbiased one is MSE or $s^2$.
+
+$$s^2 = MSE = \frac{n}{n-2}\hat{\sigma^2}$$
