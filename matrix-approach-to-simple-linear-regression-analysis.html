@@ -417,6 +417,10 @@ Published with <a href="https://github.com/rstudio/bookdown" target="blank">book
 <li>Prediction of new observation</li>
 </ul>
 <p><span class="math display">\[s^2(pred) = MSE \times (1+\mathbf{X}_{h}&#39;(\mathbf{X}&#39;\mathbf{X})^{-1}\mathbf{X}_h)\]</span></p>
+<ul>
+<li>Proof:</li>
+</ul>
+<p><span class="math display">\[\sigma^2(\mathbf{b}) = \sigma^2(\mathbf{(X&#39;X)^{-1}X&#39;Y}) = \mathbf{(X&#39;X)^{-1}X&#39;}\sigma^2(\mathbf{Y})(\mathbf{(X&#39;X)^{-1}X&#39;})&#39; = \sigma^2 \times (\mathbf{X}&#39;\mathbf{X})^{-1}\]</span></p>
 </div>
 <div id="r-code-1" class="section level2">
 <h2><span class="header-section-number">6.14</span> R code</h2>

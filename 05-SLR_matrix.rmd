@@ -259,6 +259,10 @@ $$s^2(\hat{Y}_h) = MSE \times (\mathbf{X}_{h}'(\mathbf{X}'\mathbf{X})^{-1}\mathb
 
 $$s^2(pred) = MSE \times (1+\mathbf{X}_{h}'(\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}_h)$$
 
+- Proof:
+
+$$\sigma^2(\mathbf{b}) = \sigma^2(\mathbf{(X'X)^{-1}X'Y}) = \mathbf{(X'X)^{-1}X'}\sigma^2(\mathbf{Y})(\mathbf{(X'X)^{-1}X'})' = \sigma^2 \times (\mathbf{X}'\mathbf{X})^{-1}$$
+
 ## R code
 
 - example data
