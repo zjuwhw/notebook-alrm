@@ -1,3 +1,3 @@
 # Preface
 
-This is a notebook for reading the book "[Applied Linear Regression Models (4th edition)](https://www.amazon.com/Applied-Linear-Regression-Models-Student/dp/0073014664)". 
+This is a notebook for reading the book "Applied Linear Regression Models [(4th edition)](https://www.amazon.com/Applied-Linear-Regression-Models-Student/dp/0073014664) and [(5th edition)](https://www.amazon.com/Applied-Linear-Statistical-Models-Michael/dp/007310874X/ref=sr_1_3?keywords=Applied+Linear+Regression+Models-&qid=1554185137&s=books&sr=1-3)". 
